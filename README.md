@@ -8,10 +8,9 @@
 4. [Installation Instructions](#installation-instruction)
 5. [Usage Information](#usage-information)
 6. [Contributor Guidelines](#contributor-guidelines)
-7. [Test Instructions](#test-instructions)
-8. [Mock Up](#mock-up)
-9. [License](#license)
-10. [Questions](#questions)
+7. [Mock Up](#mock-up)
+8. [License](#license)
+9. [Questions](#questions)
 
 ## Project Task
 
@@ -55,9 +54,6 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ## Contributor Guidlines
     * Contributions are always welcome! (Please fork and pull request only.)
     
-## Test Instructions
-
- ```npm test```
 
 ## Mock-Up
 
