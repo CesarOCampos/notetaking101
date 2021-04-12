@@ -49,7 +49,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ```npm i```
 
 ## Usage Information
-    * information to be known by user when using the repo
+    * N/A
     
 ## Contributor Guidlines
     * Contributions are always welcome! (Please fork and pull request only.)
