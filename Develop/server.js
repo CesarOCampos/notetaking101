@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const fs = require('fs');
 
-// Sets up the Express App Server
+//calls the server on selected port
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -25,14 +25,11 @@ app.get('/api/notes', (req, res) => {
 
 // Saves new note
 app.post('/api/notes', (req, res) => {
-    // req.body is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
     let newNote = req.body;
 
     fs.readFile(`./db/db.json`, (err, data) => {
         let notesArray = JSON.parse(data);
-        // Add id key to note object
-        newNote.id = notesArray.length + 1;
+        newNote.id = notesArray.length + 1; // Add id key to note object
         notesArray.push(newNote);
         notesArray = JSON.stringify(notesArray, null, 2);
 
@@ -57,15 +54,11 @@ app.delete('/api/notes/:id', (req, res) => {
 
     fs.readFile(`./db/db.json`, (err, data) => {
         let notesArray = JSON.parse(data);
-        // Remove note from array
-        notesArray.splice(delNoteId, 1);
-
-        // Re-number Array
-        for (let i = 0; i < notesArray.length; i++) {
+        notesArray.splice(delNoteId, 1); // Remove note from array
+        for (let i = 0; i < notesArray.length; i++) { // Re-number Array
             notesArray[i].id = i + 1;
         }
         notesArray = JSON.stringify(notesArray, null, 2);
-        //writeToFile();
 
         fs.writeFile(`./db/db.json`, notesArray, (err) => {
             if (err) throw err;
@@ -74,11 +67,5 @@ app.delete('/api/notes/:id', (req, res) => {
     })
     res.json();
 });
-
-// function writeToFile(`./db/db.json`, notesArray, ) {
-//     //console.log("writing to html perhaps");
-//     fs.writeFile(`./db/db.json`, notesArray, (err) =>
-//         err ? console.error(err) : console.log('Success! Data written to file.'));
-// }
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
